@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+
+#label{
+	text-align:center;
+}
+#forms{
+	width:700px;
+	margin-left:auto;
+	margin-right:auto;	
+}
+#create, #login {
+	border:thick;
+	border-color:#000;
+	width:300px;
+	height:200px;
+	color:#009;
+	
+}
+
+#create{
+	float:left;
+}
+#login{
+	float:right;
+}
+
+input{
+	float:right;
+	margin-right:80px;
+	margin-top:10px;
+}
+input[type=button]{
+	margin-left:100px;
+}
+
+input[name="Meeting Name"]{
+	margin-top:60px;
+}
+
+
+	
