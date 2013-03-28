@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Untitled Document</title>
+<title>TeamMeet</title>
 <link type="text/css" rel="stylesheet" href="style.css" />
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
@@ -26,30 +26,16 @@ $( "#datepicker2" ).datepicker();
 <body>
 
 <div class="container">
-  <div class="header"><!-- end .header --></div>
+  <div class="header"><!-- end .header -->
+  <img src="TeamMeetLogo.png" width="163" height="163" alt="Logo" /></div>
   <div class="content">
     <h1>Meeting Setup</h1>
     <p>Give your meeting a name: 
       <input type="text" name="meetingName" id="meetingName" />
     </p>
-    <h2>What Days?</h2>
+    <hr />
+    <h2>What dates?</h2>
     <form id="form1" name="form1" method="post" action="">
-      <p>
-        <input name="radio" type="radio" id="specificDates" value="specificDates" checked="checked" />
-      <label for="specificDates">Specific dates<br />
-        
-        
-        <p>
-      </label>
-      <p>
-        <input type="radio" name="radio" id="daysOfTheWeek" value="daysOfTheWeek" />
-        Days of the week 
-      </p>
-    </form>
-    <form id="form3" name="form3" method="post" action="">
-      <p>
-        <label for="startTime"></label>
-      </p>
       <table width="755" border="0" cellspacing="10">
         <tr>
           <td><div align="center"><strong>Begin:</strong></div></td>
@@ -57,87 +43,134 @@ $( "#datepicker2" ).datepicker();
           <td><div align="center"><strong>End:</strong></div></td>
         </tr>
         <tr>
-          <td width="312">Date :
-            <input type="text" id="datepicker" /></td>
+          <td width="312"><div align="center">Date :
+            <input type="text" id="datepicker" />
+          </div></td>
           <td width="109"><div align="center"></div></td>
-          <td width="288">Date:
-            <input type="text" id="datepicker2" /></td>
+          <td width="288"><div align="center">Date:
+            <input type="text" id="datepicker2" />
+          </div></td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </form>
+    <hr />
+    
+    <form id="form3" name="form3" method="post" action="">
+      <h2>What time of day?
+        <label for="startTime"></label>
+      </h2>
+      <table width="773" border="0">
+        <tr>
+          <td><div align="center"><strong>Begin:</strong></div></td>
+          <td>&nbsp;</td>
+          <td><div align="center"><strong>End:</strong></div></td>
         </tr>
         <tr>
-          <td>Time: 
-            <select name="startTime" id="startTime">
-            <option>12:00</option>
-            <option>12:30</option>
-            <option>1:00</option>
-            <option>1:30</option>
-            <option>2:00</option>
-            <option>2:30</option>
-            <option>3:00</option>
-            <option>3:30</option>
-            <option>4:00</option>
-            <option>4:30</option>
-            <option>5:00</option>
-            <option>5:30</option>
-            <option>6:00</option>
-            <option>6:30</option>
-            <option>7:00</option>
-            <option>7:30</option>
-            <option>8:00</option>
-            <option>8:30</option>
-            <option>9:00</option>
-            <option>9:30</option>
-            <option>10:00</option>
-            <option>10:30</option>
-            <option>11:00</option>
-            <option>11:30</option>
-          </select>
-            <input name="radio" type="radio" class="ui-corner-left" id="specificDates3" value="specificDates" checked="checked" />
-            <label for="specificDates3">AM</label>
-            <input type="radio" name="radio" id="daysOfTheWeek3" value="daysOfTheWeek" />
-PM</td>
-          <td><div align="center"></div></td>
-          <td>Time: 
-            <select name="startTime2" id="startTime2">
-            <option>12:00</option>
-            <option>12:30</option>
-            <option>1:00</option>
-            <option>1:30</option>
-            <option>2:00</option>
-            <option>2:30</option>
-            <option>3:00</option>
-            <option>3:30</option>
-            <option>4:00</option>
-            <option>4:30</option>
-            <option>5:00</option>
-            <option>5:30</option>
-            <option>6:00</option>
-            <option>6:30</option>
-            <option>7:00</option>
-            <option>7:30</option>
-            <option>8:00</option>
-            <option>8:30</option>
-            <option>9:00</option>
-            <option>9:30</option>
-            <option>10:00</option>
-            <option>10:30</option>
-            <option>11:00</option>
-            <option>11:30</option>
-          </select>
-            <input name="radio" type="radio" id="specificDates2" value="specificDates" checked="checked" />
-            <label for="specificDates2">AM</label>
-            <input type="radio" name="radio" id="daysOfTheWeek2" value="daysOfTheWeek" />
-PM</td>
+          <td><div align="center">Time:
+              <select name="startTime" id="startTime">
+                <option>12:00</option>
+                <option>12:30</option>
+                <option>1:00</option>
+                <option>1:30</option>
+                <option>2:00</option>
+                <option>2:30</option>
+                <option>3:00</option>
+                <option>3:30</option>
+                <option>4:00</option>
+                <option>4:30</option>
+                <option>5:00</option>
+                <option>5:30</option>
+                <option>6:00</option>
+                <option>6:30</option>
+                <option>7:00</option>
+                <option>7:30</option>
+                <option>8:00</option>
+                <option>8:30</option>
+                <option>9:00</option>
+                <option>9:30</option>
+                <option>10:00</option>
+                <option>10:30</option>
+                <option>11:00</option>
+                <option>11:30</option>
+              </select>
+            
+            <label>
+              
+                <input type="radio" name="RadioGroup1" value="radio" id="RadioGroup1_0" />
+                AM
+            </label>
+            <label>
+             
+                <input type="radio" name="RadioGroup1" value="radio" id="RadioGroup1_1" />
+                PM
+            </label>  
+            <br />
+          </div></td>
+          <td>&nbsp;</td>
+          <td><div align="center">Time:
+              <select name="startTime2" id="startTime2">
+                <option>12:00</option>
+                <option>12:30</option>
+                <option>1:00</option>
+                <option>1:30</option>
+                <option>2:00</option>
+                <option>2:30</option>
+                <option>3:00</option>
+                <option>3:30</option>
+                <option>4:00</option>
+                <option>4:30</option>
+                <option>5:00</option>
+                <option>5:30</option>
+                <option>6:00</option>
+                <option>6:30</option>
+                <option>7:00</option>
+                <option>7:30</option>
+                <option>8:00</option>
+                <option>8:30</option>
+                <option>9:00</option>
+                <option>9:30</option>
+                <option>10:00</option>
+                <option>10:30</option>
+                <option>11:00</option>
+                <option>11:30</option>
+              </select>
+            
+            <label>
+              
+                <input type="radio" name="RadioGroup2" value="radio" id="RadioGroup2_0" />
+                AM
+            </label>
+            <label>
+              
+                <input type="radio" name="RadioGroup2" value="radio" id="RadioGroup2_1" />
+                PM
+            </label>            
+            <br />
+          </div></td>
         </tr>
       </table>
       <p>&nbsp;</p>
     </form>
     <form id="form2" name="form2" method="post" action="">
+    <hr />
+   
       <h2>Contact</h2>
 <label for="userEmail">Your email: </label>
         <input type="text" name="userEmail" id="userEmail" />
     </form>
     <p align="center"> <!-- end .content -->
-      <a href="calendar.html"><input type="submit" name="create" id="create" value="Create" /></a>
+    </p>
+    
+    
+    <p align="center">
+    <a href="log_in.html">
+    <input type="submit" name="cancel" id="cancel" value="Cancel" />
+    </a>
+    
+    <a href="calendar.html">
+    <input type="submit" name="create" id="create" value="Create" />
+      </a>
     </p>
   </div>
   <div class="footer">
