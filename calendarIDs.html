@@ -85,9 +85,11 @@
 
     function displayBusyTimes(event){
       var cal_id = event.toElement.value;
+
       var start_date = new Date();
       var end_date = new Date();
       end_date.setDate(end_date.getDate() +5);
+
       gapi.client.load('calendar', 'v3', function(){
         var request = gapi.client.calendar.freebusy.query({
           timeMin: start_date,
@@ -103,9 +105,17 @@
           console.log(resp.calendars);
           console.log(resp.calendars[cal_id].busy);
           var busyTimes = resp.calendars[cal_id].busy;
+
+          var busyLabel = document.createElement("p");
+          busyLabel.innerHTML = "The times you are busy in the next five days";
+          document.getElementById('content').appendChild(busyLabel);
+
           for(var i=0; i<busyTimes.length; i++){
             console.log(busyTimes[i]);
             console.log("Start: " + new Date(busyTimes[i].start).toLocaleString() +" , End: " + new Date(busyTimes[i].end).toLocaleString());
+            var timeLabel = document.createElement("p");
+            timeLabel.innerHTML = "Start: " + new Date(busyTimes[i].start).toLocaleString() +" , End: " + new Date(busyTimes[i].end).toLocaleString();
+            document.getElementById('content').appendChild(timeLabel);
           }
 
         });
