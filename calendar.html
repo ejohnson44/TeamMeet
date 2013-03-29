@@ -11,9 +11,8 @@
 <script src="color-picker/jquery.colorPicker.js" type="text/javascript"></script>
 <link href="calendar.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="color-picker/colorPicker.css" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css" />
 <link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
 <script type="text/javascript">
   //Run the code when document ready
   $(function() {    
@@ -24,50 +23,59 @@
    
   });
 </script>
-<script type="text/javascript" src="calendarSelection.js" ></script>
 
+</head>
 <body>
+<div class="container">
+  <div class="header"><a href="#"><img src="" alt="Insert Logo Here" name="Insert_logo" width="20%" height="90" id="Insert_logo" style="background: #8090AB; display:block;" /></a> 
+    <!-- end .header --></div>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
+    </tr>
   <tr>
+    <td align="center" valign="middle">&nbsp;</td>
   
-    <td width="5%">&nbsp;</td>
-    <td width="20%" align="center" valign="middle"><h2>Options</h2>
+    <td align="center" valign="middle">Options
       <p>&nbsp;</p>
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td><h3>Replicate</h3></td>
-          <td><label>
+          <td>Replicate</td>
+          <td align="left"><label>
             <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0" />
             MWF</label>
             <br />
             <label>
               <input type="checkbox" name="CheckboxGroup1_" value="checkbox" id="CheckboxGroup1_1" />
-          TR</label></td>
-        </tr>
+              TR</label></td>
+          </tr>
         <tr>
           <td>
-            <h3>Selection Color</h3> 
-    	  </td>
-          <td>
-              <input id="selectionColor" type="text" name="selectionColor" />
-          </td>
-        </tr>
-      </table>
-    
-			
+            Selection Color
+            </td>
+          <td align="left">
+            <input name="selectionColor" type="text" id="selectionColor" size="10" />
+            </td>
+          </tr>
+        <tr>
+          <td colspan="2"><p>&nbsp;
+            </p>
+            <p>
+              <a href="whatsYourGmail.html"><input type="button" name="import" id="import" value="Import Google Calendar" /></a>
+            </p></td>
+          </tr>
+        </table>
+      
+      
     </td>
     <td align="center" valign="middle"><div id="TabbedPanels1" class="TabbedPanels">
       <ul class="TabbedPanelsTabGroup">
         <li class="TabbedPanelsTab" tabindex="0">My Schedule</li>
         <li class="TabbedPanelsTab" tabindex="0">Group View</li>
-      </ul>
+        </ul>
       <div class="TabbedPanelsContentGroup">
         <div class="TabbedPanelsContent">
           <table border="0" align="center" cellpadding="0" cellspacing="0" id="calendar" >
@@ -78,7 +86,7 @@
               <td class="calendar">Wednesday</td>
               <td class="calendar">Thursday</td>
               <td class="calendar">Friday</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">9:00 am</td>
               <td class="not_highlighted top_hour" id="0">&nbsp;</td>
@@ -86,7 +94,7 @@
               <td class="not_highlighted top_hour" id="2">&nbsp;</td>
               <td class="not_highlighted top_hour" id="3">&nbsp;</td>
               <td class="not_highlighted top_hour" id="4">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="5">&nbsp;</td>
@@ -94,7 +102,7 @@
               <td class="not_highlighted bottom_hour" id="7">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="8">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="9">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">10:00 am</td>
               <td class="not_highlighted top_hour" id="10">&nbsp;</td>
@@ -102,7 +110,7 @@
               <td class="not_highlighted top_hour" id="12">&nbsp;</td>
               <td class="not_highlighted top_hour" id="13">&nbsp;</td>
               <td class="not_highlighted top_hour" id="14">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="15">&nbsp;</td>
@@ -110,7 +118,7 @@
               <td class="not_highlighted bottom_hour" id="17">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="18">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="19">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">11:00 am</td>
               <td class="not_highlighted top_hour" id="20">&nbsp;</td>
@@ -118,7 +126,7 @@
               <td class="not_highlighted top_hour" id="22">&nbsp;</td>
               <td class="not_highlighted top_hour" id="23">&nbsp;</td>
               <td class="not_highlighted top_hour" id="24">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="25">&nbsp;</td>
@@ -126,7 +134,7 @@
               <td class="not_highlighted bottom_hour" id="27">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="28">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="29">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">12:00 pm</td>
               <td class="not_highlighted top_hour" id="30">&nbsp;</td>
@@ -134,7 +142,7 @@
               <td class="not_highlighted top_hour" id="32">&nbsp;</td>
               <td class="not_highlighted top_hour" id="33">&nbsp;</td>
               <td class="not_highlighted top_hour" id="34">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="35">&nbsp;</td>
@@ -142,7 +150,7 @@
               <td class="not_highlighted bottom_hour" id="37">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="38">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="39">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">1:00 pm</td>
               <td class="not_highlighted top_hour" id="40">&nbsp;</td>
@@ -150,7 +158,7 @@
               <td class="not_highlighted top_hour" id="42">&nbsp;</td>
               <td class="not_highlighted top_hour" id="43">&nbsp;</td>
               <td class="not_highlighted top_hour" id="44">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="45">&nbsp;</td>
@@ -158,7 +166,7 @@
               <td class="not_highlighted bottom_hour" id="47">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="48">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="49">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">2:00 pm</td>
               <td class="not_highlighted top_hour" id="50">&nbsp;</td>
@@ -166,7 +174,7 @@
               <td class="not_highlighted top_hour" id="52">&nbsp;</td>
               <td class="not_highlighted top_hour" id="53">&nbsp;</td>
               <td class="not_highlighted top_hour" id="54">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="55">&nbsp;</td>
@@ -174,7 +182,7 @@
               <td class="not_highlighted bottom_hour" id="57">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="58">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="59">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">3:00 pm</td>
               <td class="not_highlighted top_hour" id="60">&nbsp;</td>
@@ -182,7 +190,7 @@
               <td class="not_highlighted top_hour" id="62">&nbsp;</td>
               <td class="not_highlighted top_hour" id="63">&nbsp;</td>
               <td class="not_highlighted top_hour" id="64">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="65">&nbsp;</td>
@@ -190,7 +198,7 @@
               <td class="not_highlighted bottom_hour" id="67">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="68">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="69">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">4:00 pm</td>
               <td class="not_highlighted top_hour" id="70">&nbsp;</td>
@@ -198,7 +206,7 @@
               <td class="not_highlighted top_hour" id="72">&nbsp;</td>
               <td class="not_highlighted top_hour" id="73">&nbsp;</td>
               <td class="not_highlighted top_hour" id="74">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="75">&nbsp;</td>
@@ -206,7 +214,7 @@
               <td class="not_highlighted bottom_hour" id="77">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="78">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="79">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">5:00 pm</td>
               <td class="not_highlighted top_hour" id="80">&nbsp;</td>
@@ -214,7 +222,7 @@
               <td class="not_highlighted top_hour" id="82">&nbsp;</td>
               <td class="not_highlighted top_hour" id="83">&nbsp;</td>
               <td class="not_highlighted top_hour" id="84">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="85">&nbsp;</td>
@@ -222,7 +230,7 @@
               <td class="not_highlighted bottom_hour" id="87">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="88">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="89">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">6:00 pm</td>
               <td class="not_highlighted top_hour" id="90">&nbsp;</td>
@@ -230,7 +238,7 @@
               <td class="not_highlighted top_hour" id="92">&nbsp;</td>
               <td class="not_highlighted top_hour" id="93">&nbsp;</td>
               <td class="not_highlighted top_hour" id="94">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="95">&nbsp;</td>
@@ -238,7 +246,7 @@
               <td class="not_highlighted bottom_hour" id="97">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="98">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="99">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">7:00 pm</td>
               <td class="not_highlighted top_hour" id="100">&nbsp;</td>
@@ -246,7 +254,7 @@
               <td class="not_highlighted top_hour" id="102">&nbsp;</td>
               <td class="not_highlighted top_hour" id="103">&nbsp;</td>
               <td class="not_highlighted top_hour" id="104">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="105">&nbsp;</td>
@@ -254,7 +262,7 @@
               <td class="not_highlighted bottom_hour" id="107">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="108">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="109">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">8:00 pm</td>
               <td class="not_highlighted top_hour" id="110">&nbsp;</td>
@@ -262,9 +270,9 @@
               <td class="not_highlighted top_hour" id="112">&nbsp;</td>
               <td class="not_highlighted top_hour" id="113">&nbsp;</td>
               <td class="not_highlighted top_hour" id="114">&nbsp;</td>
-            </tr>
-          </table>
-        </div>
+              </tr>
+            </table>
+          </div>
         <div class="TabbedPanelsContent">
           <table border="0" align="center" cellpadding="0" cellspacing="0" id="calendar" >
             <tr>
@@ -274,7 +282,7 @@
               <td class="calendar">Wednesday</td>
               <td class="calendar">Thursday</td>
               <td class="calendar">Friday</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">9:00 am</td>
               <td class="not_highlighted top_hour" id="0">&nbsp;</td>
@@ -282,7 +290,7 @@
               <td class="not_highlighted top_hour" id="2">&nbsp;</td>
               <td class="not_highlighted top_hour" id="3">&nbsp;</td>
               <td class="not_highlighted top_hour" id="4">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="5">&nbsp;</td>
@@ -290,7 +298,7 @@
               <td class="not_highlighted bottom_hour" id="7">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="8">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="9">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">10:00 am</td>
               <td class="not_highlighted top_hour" id="10">&nbsp;</td>
@@ -298,7 +306,7 @@
               <td class="not_highlighted top_hour" id="12">&nbsp;</td>
               <td class="not_highlighted top_hour" id="13">&nbsp;</td>
               <td class="not_highlighted top_hour" id="14">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="15">&nbsp;</td>
@@ -306,7 +314,7 @@
               <td class="not_highlighted bottom_hour" id="17">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="18">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="19">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">11:00 am</td>
               <td class="not_highlighted top_hour" id="20">&nbsp;</td>
@@ -314,7 +322,7 @@
               <td class="not_highlighted top_hour" id="22">&nbsp;</td>
               <td class="not_highlighted top_hour" id="23">&nbsp;</td>
               <td class="not_highlighted top_hour" id="24">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="25">&nbsp;</td>
@@ -322,7 +330,7 @@
               <td class="not_highlighted bottom_hour" id="27">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="28">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="29">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">12:00 pm</td>
               <td class="not_highlighted top_hour" id="30">&nbsp;</td>
@@ -330,7 +338,7 @@
               <td class="not_highlighted top_hour" id="32">&nbsp;</td>
               <td class="not_highlighted top_hour" id="33">&nbsp;</td>
               <td class="not_highlighted top_hour" id="34">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="35">&nbsp;</td>
@@ -338,7 +346,7 @@
               <td class="not_highlighted bottom_hour" id="37">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="38">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="39">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">1:00 pm</td>
               <td class="not_highlighted top_hour" id="40">&nbsp;</td>
@@ -346,7 +354,7 @@
               <td class="not_highlighted top_hour" id="42">&nbsp;</td>
               <td class="not_highlighted top_hour" id="43">&nbsp;</td>
               <td class="not_highlighted top_hour" id="44">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="45">&nbsp;</td>
@@ -354,7 +362,7 @@
               <td class="not_highlighted bottom_hour" id="47">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="48">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="49">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">2:00 pm</td>
               <td class="not_highlighted top_hour" id="50">&nbsp;</td>
@@ -362,7 +370,7 @@
               <td class="not_highlighted top_hour" id="52">&nbsp;</td>
               <td class="not_highlighted top_hour" id="53">&nbsp;</td>
               <td class="not_highlighted top_hour" id="54">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="55">&nbsp;</td>
@@ -370,7 +378,7 @@
               <td class="not_highlighted bottom_hour" id="57">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="58">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="59">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">3:00 pm</td>
               <td class="not_highlighted top_hour" id="60">&nbsp;</td>
@@ -378,7 +386,7 @@
               <td class="not_highlighted top_hour" id="62">&nbsp;</td>
               <td class="not_highlighted top_hour" id="63">&nbsp;</td>
               <td class="not_highlighted top_hour" id="64">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="65">&nbsp;</td>
@@ -386,7 +394,7 @@
               <td class="not_highlighted bottom_hour" id="67">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="68">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="69">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">4:00 pm</td>
               <td class="not_highlighted top_hour" id="70">&nbsp;</td>
@@ -394,7 +402,7 @@
               <td class="not_highlighted top_hour" id="72">&nbsp;</td>
               <td class="not_highlighted top_hour" id="73">&nbsp;</td>
               <td class="not_highlighted top_hour" id="74">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="75">&nbsp;</td>
@@ -402,7 +410,7 @@
               <td class="not_highlighted bottom_hour" id="77">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="78">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="79">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">5:00 pm</td>
               <td class="not_highlighted top_hour" id="80">&nbsp;</td>
@@ -410,7 +418,7 @@
               <td class="not_highlighted top_hour" id="82">&nbsp;</td>
               <td class="not_highlighted top_hour" id="83">&nbsp;</td>
               <td class="not_highlighted top_hour" id="84">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="85">&nbsp;</td>
@@ -418,7 +426,7 @@
               <td class="not_highlighted bottom_hour" id="87">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="88">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="89">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">6:00 pm</td>
               <td class="not_highlighted top_hour" id="90">&nbsp;</td>
@@ -426,7 +434,7 @@
               <td class="not_highlighted top_hour" id="92">&nbsp;</td>
               <td class="not_highlighted top_hour" id="93">&nbsp;</td>
               <td class="not_highlighted top_hour" id="94">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="95">&nbsp;</td>
@@ -434,7 +442,7 @@
               <td class="not_highlighted bottom_hour" id="97">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="98">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="99">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">7:00 pm</td>
               <td class="not_highlighted top_hour" id="100">&nbsp;</td>
@@ -442,7 +450,7 @@
               <td class="not_highlighted top_hour" id="102">&nbsp;</td>
               <td class="not_highlighted top_hour" id="103">&nbsp;</td>
               <td class="not_highlighted top_hour" id="104">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="105">&nbsp;</td>
@@ -450,7 +458,7 @@
               <td class="not_highlighted bottom_hour" id="107">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="108">&nbsp;</td>
               <td class="not_highlighted bottom_hour" id="109">&nbsp;</td>
-            </tr>
+              </tr>
             <tr>
               <td class="times">8:00 pm</td>
               <td class="not_highlighted top_hour" id="110">&nbsp;</td>
@@ -458,22 +466,25 @@
               <td class="not_highlighted top_hour" id="112">&nbsp;</td>
               <td class="not_highlighted top_hour" id="113">&nbsp;</td>
               <td class="not_highlighted top_hour" id="114">&nbsp;</td>
-            </tr>
-          </table>
+              </tr>
+            </table>
+          </div>
         </div>
-      </div>
     </div></td>
-    <td width="5%">&nbsp;</td>
-  </tr>
+    </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
+    </tr>
 </table>
 <script type="text/javascript">
 var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
 </script>
+  <!-- end .content --></div>
+  <div class="footer">
+    <p>Footer</p>
+    <!-- end .footer --></div>
+  <!-- end .container --></div>
 </body>
 </html>
