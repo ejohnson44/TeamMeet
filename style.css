@@ -1,10 +1,16 @@
 
 body {
   font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	background: #4E5869;
+	background: #6F7D94;
 	margin: 0;
 	padding: 0;
 	color: #000;
+}
+#container {
+    background-image:url(yourimage.jpg);
+    background-position:center;
+    width:700px;
+    height:400px;
 }
 
 /* ~~ Element/tag selectors ~~ */
@@ -75,6 +81,7 @@ It contains an image placeholder that should be replaced with your own linked lo
 	background: #6F7D94;
 }
 
+
 /* ~~ This is the layout information. ~~ 
 
 1) Padding is only placed on the top and/or bottom of the div. 
@@ -89,6 +96,7 @@ It contains an image placeholder that should be replaced with your own linked lo
 .content {
 	padding: 10px 0;
 }
+
 
 /* ~~ This grouped selector gives the lists in the .content area space ~~ */
 .content ul, .content ol { 
