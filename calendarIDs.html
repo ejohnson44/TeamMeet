@@ -6,6 +6,7 @@
 	</form>
     </div>
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
+    <script type='text/javascript' src='calendarGeneration.js'></script>
     <script type="text/javascript">
 
       var clientId = '583534449735.apps.googleusercontent.com';
@@ -89,6 +90,8 @@
       var start_date = new Date();
       var end_date = new Date();
       end_date.setDate(end_date.getDate() +5);
+
+      console.log(end_date-start_date);
 
       gapi.client.load('calendar', 'v3', function(){
         var request = gapi.client.calendar.freebusy.query({

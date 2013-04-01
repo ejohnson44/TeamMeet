@@ -75,6 +75,7 @@ function displayBusyTimes(event){
   var start_date = new Date();
   var end_date = new Date();
   end_date.setDate(end_date.getDate() +5);
+  console.log(end_date-start_date);
   gapi.client.load('calendar', 'v3', function(){
     var request = gapi.client.calendar.freebusy.query({
       timeMin: start_date,
