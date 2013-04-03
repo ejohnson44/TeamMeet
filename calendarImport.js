@@ -5,12 +5,12 @@ var scopes = 'https://www.googleapis.com/auth/calendar';
 //array of objects that holds the calendar name and id
 var calendars = new Array();
 
+var times_by_cal = [];
+
 
 function handleClientLoad() {
-  // Step 2: Reference the API key
+  //Reference the API key
   gapi.client.setApiKey(apiKey);
-
-  //for now, just set the end date to 5 days later
 
 }
 
@@ -44,7 +44,7 @@ function makeApiCall() {
       
       for(var i=0; i<resp.items.length; i++){
         //save the calendar information
-        calendars[i] = {name: resp.items[i].summary, id: resp.items[i].id};
+        calendars[i] = {name: resp.items[i].summary, id: resp.items[i].id, busy: []};
         //make the checkbox
         makeCheckBox(calendars[i].name, calendars[i].id);
       }
@@ -62,7 +62,7 @@ function makeCheckBox(name, id){
   var checkbox = document.createElement("input");
   checkbox.type="checkbox";
   checkbox.value = id;
-  checkbox.onclick = displayBusyTimes;
+  checkbox.onclick = calBoxClicked;
 
   var label = document.createElement("label");
   label.appendChild(document.createTextNode(name));
@@ -72,8 +72,15 @@ function makeCheckBox(name, id){
 
   document.getElementById('content').appendChild(container);
 }
-
-function displayBusyTimes(event){
+function calBoxClicked(event){
+  if(event.toElement.checked){
+    checkCal(event);
+  }
+  else{
+    uncheckCal(event);
+  }
+}
+function checkCal(event){
   //get the calendar id for the checkbox
   var cal_id = event.toElement.value;
 
@@ -90,46 +97,74 @@ function displayBusyTimes(event){
 
     //execute the free/busy request
     request.execute(function(resp){
-      //console.log(cal_id);
-      //console.log(resp.calendars);
-      //console.log(resp.calendars[cal_id].busy);
       
       //get the busy times from the response
       var busyTimes = resp.calendars[cal_id].busy;
 
-     // var busyLabel = document.createElement("p");
-     // busyLabel.innerHTML = "The times you are busy in the next five days";
-     // document.getElementById('content').appendChild(busyLabel);
-
-      for(var i=0; i<busyTimes.length; i++){
-        //console.log(busyTimes[i]);
-        //console.log("Start: " + new Date(busyTimes[i].start).toLocaleString() +" , End: " + new Date(busyTimes[i].end).toLocaleString());
-        var start_busy = new Date(busyTimes[i].start);
-        var end_busy =  new Date(busyTimes[i].end);
-        var minutes = (end_busy-start_busy)/(1000*60);
-       // console.log(minutes);
-        for(var j=0; j<minutes; j+=30){
-          var date = new Date(start_busy.toLocaleString());
-          //console.log(date.toLocaleString());
-          date.setTime(date.getTime() + j*60*1000);
-
-          //console.log(date.toLocaleString());
-          var element = document.getElementById(date.toLocaleString());
-          if(element != null){
-            var classes = (element.className).split(" ");
-
-            element.className = "highlighted " + classes[1];
-           // console.log(element);
+      //find the calendar that corresponds to this one in our array
+      var cal_position = -1;
+      for(var i=0; i<calendars.length; i++){
+        if(calendars[i].id === cal_id){
+          cal_position = i;
         }
       }
-    }
 
-    transferToGroup();
+      var count = 0;
+      for(var i=0; i<busyTimes.length; i++){
+        var start_busy = new Date(busyTimes[i].start);
+        var end_busy =  new Date(busyTimes[i].end);
 
+        var minutes = (end_busy-start_busy)/(1000*60);
+        
+        for(var j=0; j<minutes; j+=30){
+          var date = new Date(start_busy.toLocaleString());
+          date.setTime(date.getTime() + j*60*1000);
+
+          //save the busy times
+          calendars[cal_position].busy[count] = date;
+          count++;
+        }
+      }
+      console.log(calendars[cal_position]);
+      displayBusyTimes();
+      transferToGroup();
     }); //end the request
   }); //end the calendar load
+}
 
+function uncheckCal(event){
+  var cal_id = event.toElement.value;
 
+  var cal_position = -1;
+      for(var i=0; i<calendars.length; i++){
+        if(calendars[i].id === cal_id){
+          for(var j=0; j<calendars[i].busy.length; j++){
+            var element = document.getElementById(calendars[i].busy[j].toLocaleString());
+            if(element != null){  
+                element.className = element.className.replace("highlighted", "not_highlighted");
+            }
+          }
+
+          calendars[i].busy = [];
+          console.log("unchecked " + calendars[i].busy);
+        }
+      }
+
+      displayBusyTimes();
+      transferToGroup();
+}
+
+function displayBusyTimes(){
+  for(var i = 0; i<calendars.length; i++){
+    for(var j=0; j<calendars[i].busy.length; j++){
+      var element = document.getElementById(calendars[i].busy[j].toLocaleString());
+          if(element != null){
+            if(element.className.indexOf("not_highlighted") != -1){
+              element.className = element.className.replace("not_highlighted", "highlighted");
+            }
+          }
+    }
+  }
 }
 
 
@@ -139,11 +174,66 @@ function transferToGroup(){
 
   var elements_indiv = individual.getElementsByTagName('td');
   var elements_group = group.getElementsByTagName('td');
+  
   for(var i=0; i<elements_indiv.length; i++){
-    var classes = elements_indiv[i].className.split(" ");
-    console.log(classes);
-    if(classes[0]=="highlighted"){
-      elements_group[i].className = "highlighted " + classes[1];
+      elements_group[i].className =  elements_indiv[i].className;
+  }
+
+}
+
+function replicate(mwf){
+  console.log(mwf);
+  var num_days = (end_date-start_date)/(1000*60*60*24);
+  var day = start_date.getDay();
+  var num_hours = end_time-start_time;
+
+  for(var i=0; i<num_days; i++){
+    if( ((day==1 || day==3 || day==5)&&mwf) || ((day==2 || day==4)&&!mwf) )
+      break;
+    day = (day+1)%7;
+  }
+
+  var busy_on_day = []
+
+  var date = new Date(start_date.toDateString());
+  date.setDate(date.getDate()+(day-start_date.getDay()));
+
+  var elements = document.getElementById('calendar').getElementsByTagName('td');
+  var count = 0;
+  console.log(date.toLocaleDateString());
+  for(var i=0; i<elements.length; i++){
+    //console.log(elements)
+    
+    if(new Date(elements[i].id).toLocaleDateString() === date.toLocaleDateString()){
+      console.log(elements[i].className);
+      if(elements[i].className.indexOf("not_highlighted") == -1){
+        busy_on_day[count++] = {time: new Date(elements[i].id).toLocaleTimeString(), busy: "highlighted"};
+      }
+      else{
+        busy_on_day[count++] = {time: new Date(elements[i].id).toLocaleTimeString(), busy: "not_highlighted"};
+      }
+    }
+  }
+
+  console.log(busy_on_day);
+   
+   for(var i=0; i<elements.length; i++){
+    var e_date = new Date(elements[i].id);
+    if(  ((e_date.getDay() == 1 || e_date.getDay() == 3 || e_date.getDay() == 5) && mwf) || ((e_date.getDay() == 2 || e_date.getDay() == 4 ) && !mwf) ){
+      if(elements[i].className.indexOf("not_highlighted") != -1){
+        for(var j=0; j<busy_on_day.length; j++){
+          if( e_date.toLocaleTimeString() === busy_on_day[j].time){
+            elements[i].className = elements[i].className.replace("not_highlighted", busy_on_day[j].busy);
+          }
+        }
+      }
+      else{
+        for(var j=0; j<busy_on_day.length; j++){
+          if( e_date.toLocaleTimeString() === busy_on_day[j].time){
+            elements[i].className = elements[i].className.replace("highlighted", busy_on_day[j].busy);
+          }
+        }
+      }
     }
   }
 }

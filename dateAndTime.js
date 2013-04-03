@@ -6,8 +6,8 @@ var end_time;
 
 
 function setDatesAndTimes(){
-	start_date = $("#datepicker").datepicker("getDate");
-	end_date = $("#datepicker2").datepicker("getDate"); 
+	start_date = $("#datepicker").datepicker("getDate").toDateString();
+	end_date = $("#datepicker2").datepicker("getDate").toDateString(); 
 
 	setStartTime();
 	setEndTime();

@@ -4,21 +4,28 @@ var end_date;
 var start_time;
 var end_time;
 
-//when the window loads, generate the calendar
+var weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+//when the window loads, generate the calendar and get the information out of the url
 $(window).load(function(){
-	console.log("loading");
-  	if(document.getElementById('calendar').getElementsByTagName('td').length == 0){
-    	generateCalendar('calendar');
-    	generateCalendar('group_calendar');
-	}
 
 	var timeInfo = document.URL.split('?')[1].split("&");
 	
 	start_time = parseInt(timeInfo[0].split("=")[1]);
 	end_time = parseInt(timeInfo[1].split("=")[1]);
 
+  start_date_string = timeInfo[2].split("=")[1].replace(/%20/g, " ");
+  end_date_string = timeInfo[3].split("=")[1].replace(/%20/g, " ");
 
-	console.log(timeInfo);
+  start_date = new Date(start_date_string);
+  end_date = new Date(end_date_string);
+  end_date.setHours(end_time);
+
+
+
+  generateCalendar('calendar');
+  generateCalendar('group_calendar');
+
 });
 
 function loadCalendars(){
@@ -45,13 +52,14 @@ function generateCalendar(htmlID){
   table_entry.value = '&nbsp;';
   table_row.appendChild(table_entry);
 
-  for(var i=0; i<num_days; i++){
+  //make the day labels
+  for(var i=0; i<=num_days; i++){
     var date = new Date(start_date.toDateString());
     date.setDate(start_date.getDate()+i);
 
     var table_entry = document.createElement('td');
     table_entry.className = 'day';
-    table_entry.innerHTML = "     " + (date.getMonth()+1) + "/" + date.getDate() + "     ";
+    table_entry.innerHTML = weekdays[date.getDay()] + " " +(date.getMonth()+1) + "/" + date.getDate();
 
     table_row.appendChild(table_entry);
   }
@@ -87,8 +95,8 @@ function generateCalendar(htmlID){
     }
 
     table_row.appendChild(table_entry);
-    //loop for each dat
-    for(var j=0; j<num_days; j++){
+    //loop for each day
+    for(var j=0; j<=num_days; j++){
       var date = new Date(start_date.toDateString());
       date.setDate(date.getDate()+j);
       date.setHours(start_time+i/2);

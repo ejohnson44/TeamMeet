@@ -136,6 +136,12 @@ It contains an image placeholder that should be replaced with your own linked lo
 	margin-right: 8px;
 }
 
+.ctr{
+	width: 80%
+	margin: 0 auto;
+	text-align: center;
+}
+
 /* 
  * this class can be placed on a <br /> or empty div as the final element following 
  * the last floated div (within the #container) if the #footer is removed or 

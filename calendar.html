@@ -49,11 +49,11 @@
         <tr>
           <td>Replicate</td>
           <td align="left"><label>
-            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0" />
+            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0" onclick = "replicate(true)" />
             MWF</label>
             <br />
             <label>
-              <input type="checkbox" name="CheckboxGroup1_" value="checkbox" id="CheckboxGroup1_1" />
+              <input type="checkbox" name="CheckboxGroup1_" value="checkbox" id="CheckboxGroup1_1" onclick = "replicate(false)"/>
               TR</label></td>
           </tr>
         <tr>
@@ -89,9 +89,9 @@
           <table border="0" align="center" cellpadding="0" cellspacing="0" id="calendar">
             </table>
           </div>
-        <div class="TabbedPanelsContent">
+        <div class="TabbedPanelsContent" onclick='transferToGroup()'>
           <table border="0" align="center" cellpadding="0" cellspacing="0" id="group_calendar" >
-            </table>
+          </table>
           </div>
         </div>
     </div></td>
@@ -103,7 +103,7 @@
     </tr>
 </table>
 <script type="text/javascript">
-var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+  var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
 </script>
   <!-- end .content --></div>
   <!-- end .container --></div>
