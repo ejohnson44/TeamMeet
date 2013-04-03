@@ -1,14 +1,15 @@
 // JavaScript Document
-
-$(function () {
+function attachListeners(htmlID){
 	var MouseState = {
 				'UP': 0,
 				'NO_HIGHLIGHT': 1,
 				'HIGHLIGHT': 2
 	};
 	mouseState = MouseState.UP;
-  	$("#calendar td")
+	var selector = "#"+htmlID +" td";
+  	$(selector)
     	.mousedown(function () {
+    		console.log(this);
 			if ($(this).hasClass("not_highlighted")) {
 				mouseState = MouseState.HIGHLIGHT;
 				$(this).toggleClass("highlighted");
@@ -19,6 +20,7 @@ $(function () {
 				$(this).toggleClass("highlighted");
 				$(this).toggleClass("not_highlighted");
 			}
+			transferToGroup();
 			return false; // prevent text selection
 		})
     .mouseover(function () {
@@ -34,10 +36,12 @@ $(function () {
 				$(this).toggleClass("not_highlighted");
 			}
 		}
+		transferToGroup();
     });
   
   $(document)
     .mouseup(function () {
       	mouseState = MouseState.UP;
     });
-});
+
+}
