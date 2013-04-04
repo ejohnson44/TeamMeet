@@ -127,7 +127,6 @@ function checkCal(event){
       }
       console.log(calendars[cal_position]);
       displayBusyTimes();
-      transferToGroup();
     }); //end the request
   }); //end the calendar load
 }
@@ -151,7 +150,6 @@ function uncheckCal(event){
       }
 
       displayBusyTimes();
-      transferToGroup();
 }
 
 function displayBusyTimes(){
@@ -179,10 +177,16 @@ function transferToGroup(){
       elements_group[i].className =  elements_indiv[i].className;
   }
 
+  showMeetingTimes();
+  console.log("transferToGroup");
+
 }
 
-function replicate(mwf){
-  console.log(mwf);
+function replicate(event){
+  var mwf = false;
+  if(event.toElement.id==="mwf"){
+    mwf=true;
+  }
   var num_days = (end_date-start_date)/(1000*60*60*24);
   var day = start_date.getDay();
   var num_hours = end_time-start_time;
@@ -236,4 +240,125 @@ function replicate(mwf){
       }
     }
   }
+}
+
+function showOptions(){
+  var container = document.getElementById("options");
+  
+  if(document.getElementById("options_table")!=null){
+    container.removeChild(document.getElementById("options_table"));
+  }
+  
+  var table = container.appendChild(document.createElement("table"));
+  table.width="100%";
+  table.border="0";
+  table.cellspacing="0";
+  table.cellpadding="0";
+  table.id="options_table";
+  container.appendChild(table);
+
+  var row = document.createElement("tr");
+  row.className="fltl";
+  table.appendChild(row);
+  
+  
+
+  var rep = document.createElement("td");
+  rep.innerHTML = 'Replicate';
+  row.appendChild(rep);
+
+  
+  
+  //var boxes =  row.appendChild(document.createElement("td"));
+  //boxes.align="left";
+  rep.appendChild(document.createElement("br")).appendChild(document.createElement("br"));
+  
+
+
+
+  var box = rep.appendChild(document.createElement("input"));
+  box.type="checkbox";
+  box.id="mwf"
+  box.onclick=replicate;
+
+  var label = rep.appendChild(document.createElement("label"));
+  label.innerHTML = "MWF";
+
+  rep.appendChild(document.createElement("br"));
+
+  
+
+  box = rep.appendChild(document.createElement("input"));
+  box.type="checkbox";
+  box.id="tr"
+  box.onclick=replicate;
+
+  label = rep.appendChild(document.createElement("label"));
+  label.innerHTML = "TR";
+
+  table.appendChild(document.createElement("br"));
+  var row = table.appendChild(document.createElement("tr"));
+  row.className="fltl";
+  var div = row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
+  div.id='content';
+
+  var button = div.appendChild(document.createElement("input"));
+  button.type="button";
+  button.value="Find Google Calendars";
+  button.onclick=handleAuthClick;
+
+}
+
+function showMeetingTimes(){
+  console.log("shown");
+  var container = document.getElementById("options");
+
+  if(document.getElementById("options_table")!=null){
+    container.removeChild(document.getElementById("options_table"));
+  }
+
+  var table = container.appendChild(document.createElement("table"));
+  table.id="options_table";
+
+
+  table.appendChild(document.createElement("tr"))
+       .appendChild(document.createElement("td")).innerHTML="Suggested Meeting Times";
+
+
+  var meeting_times = ["Monday, April 8th, 10:00 am", "Wednesday, April 10th, 4:00 pm", "Thursday, April 11th, 3:00 pm"];
+  
+  for(var i=0; i<meeting_times.length; i++){
+    
+    var element = table.appendChild(document.createElement("tr"))
+                       .appendChild(document.createElement("td"));
+    
+    var radio_button = element.appendChild(document.createElement("input"));
+    radio_button.type="radio";
+    radio_button.name= "meeting_times";
+    radio_button.value= meeting_times[i];
+
+    var label = element.appendChild(document.createElement("label"));
+    label.innerHTML=meeting_times[i];
+  }
+table.appendChild(document.createElement("tr"))
+       .appendChild(document.createElement("td")).innerHTML='&nbsp;';
+
+table.appendChild(document.createElement("tr"))
+       .appendChild(document.createElement("td")).innerHTML="Filter By Availability";
+
+  var percentages = ["100%", "+75%", "+50%", "+25%"];
+  for(var i=0; i<percentages.length; i++){
+    
+    var element = table.appendChild(document.createElement("tr"))
+                       .appendChild(document.createElement("td"));
+    
+    var radio_button = element.appendChild(document.createElement("input"));
+    radio_button.type="radio";
+    radio_button.name= "percentages";
+    radio_button.value= percentages[i];
+    
+    var label = element.appendChild(document.createElement("label"));
+    label.innerHTML=percentages[i];
+  }
+
 }
