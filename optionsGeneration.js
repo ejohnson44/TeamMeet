@@ -6,8 +6,8 @@ function showOptions(){
     container.removeChild(document.getElementById("options_table"));
   }
   
+  //generate the table that holds everything in this section
   var table = container.appendChild(document.createElement("table"));
-  //table.width="100%";
   table.border="0";
   table.cellspacing="0";
   table.cellpadding="0";
@@ -15,45 +15,47 @@ function showOptions(){
   table.align="center";
   container.appendChild(table);
 
-  var row = document.createElement("tr");
-  row.className="fltl";
-  table.appendChild(row);
+
+  //make the row to hold everything for the replication
+  var rep_row = document.createElement("tr");
+  rep_row.className="fltl";
+  table.appendChild(rep_row);
   
   
 
-  var rep = document.createElement("td");
-  rep.innerHTML = '<strong>Replicate</strong>';
-  row.appendChild(rep);
+  //make the element to hold all of the replicate stuff
+  var rep_element = document.createElement("td");
+  rep_element.innerHTML = '<strong>Replicate</strong>';
+  rep_row.appendChild(rep_element);
 
-  rep.appendChild(document.createElement("br"));
+  rep_element.appendChild(document.createElement("br"));
 
 
-  var box = rep.appendChild(document.createElement("input"));
+  var box = rep_element.appendChild(document.createElement("input"));
   box.type="checkbox";
   box.id="mwf"
   box.onclick=replicate;
 
-  var label = rep.appendChild(document.createElement("label"));
+  var label = rep_element.appendChild(document.createElement("label"));
   label.innerHTML = "MWF";
 
-  rep.appendChild(document.createElement("br"));
+  rep_element.appendChild(document.createElement("br"));
 
-  box = rep.appendChild(document.createElement("input"));
+  box = rep_element.appendChild(document.createElement("input"));
   box.type="checkbox";
   box.id="tr"
   box.onclick=replicate;
 
-  label = rep.appendChild(document.createElement("label"));
+  label = rep_element.appendChild(document.createElement("label"));
   label.innerHTML = "TR";
 
 
-  rep.appendChild(document.createElement("hr"));
+  rep_element.appendChild(document.createElement("hr"));
   
-  var row = table.appendChild(document.createElement("tr"));
-  row.className="fltl";
+  var cal_row = table.appendChild(document.createElement("tr"));
   
-  var td = row.appendChild(document.createElement("td"))
-  var div = td.appendChild(document.createElement("div"));
+  var cal_element = cal_row.appendChild(document.createElement("td"))
+  var div = cal_element.appendChild(document.createElement("div"));
   div.id='content';
 
   var button = div.appendChild(document.createElement("input"));
@@ -61,11 +63,11 @@ function showOptions(){
   button.value="Find My Google Calendars";
   button.onclick=handleAuthClick;
 
-  td.appendChild(document.createElement("hr"));
+  cal_element.appendChild(document.createElement("hr"));
 
-  var row = table.appendChild(document.createElement("tr"));
-  row.className="fltl";
-  var div = row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
+  var email_row = table.appendChild(document.createElement("tr"));
+  email_row.className="fltl";
+  var div = email_row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
   div.id='emails';
 
   var who = div.appendChild(document.createElement("h4"));
