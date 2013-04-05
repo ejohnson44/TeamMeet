@@ -1,6 +1,7 @@
 
 body {
-  font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 14px;
 	background: #155587;
 	margin: 0;
 	padding: 0;

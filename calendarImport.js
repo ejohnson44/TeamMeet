@@ -46,6 +46,7 @@ function makeApiCall() {
       var boxes = document.getElementById('content').getElementsByTagName("div");
       var length = new Number(boxes.length);
       
+      //remove the boxes that were created previously
       while( boxes.length >0 ){
         document.getElementById('content').removeChild(boxes[0]);
       }
@@ -55,7 +56,9 @@ function makeApiCall() {
         //save the calendar information
         calendars[i] = {name: resp.items[i].summary, id: resp.items[i].id, busy: []};
         //make the checkbox
-        makeCheckBox(calendars[i].name, calendars[i].id);
+        if(calendars[i].id.indexOf("calendar.google.com") != -1){
+          makeCheckBox(calendars[i].name, calendars[i].id);
+        }
       }
 
     }); //close execution function
@@ -185,6 +188,7 @@ function transferToGroup(){
   
   for(var i=0; i<elements_indiv.length; i++){
       elements_group[i].className =  elements_indiv[i].className;
+      elements_group[i].value = elements_group[i].value+1;
   }
 
   showMeetingTimes();
@@ -250,157 +254,4 @@ function replicate(event){
       }
     }
   }
-}
-
-function showOptions(){
-  var container = document.getElementById("options");
-  
-  if(document.getElementById("options_table")!=null){
-    container.removeChild(document.getElementById("options_table"));
-  }
-  
-  var table = container.appendChild(document.createElement("table"));
-  table.width="100%";
-  table.border="0";
-  table.cellspacing="0";
-  table.cellpadding="0";
-  table.id="options_table";
-  container.appendChild(table);
-
-  var row = document.createElement("tr");
-  row.className="fltl";
-  table.appendChild(row);
-  
-  
-
-  var rep = document.createElement("td");
-  rep.innerHTML = 'Replicate';
-  row.appendChild(rep);
-
-  rep.appendChild(document.createElement("br")).appendChild(document.createElement("br"));
-
-
-  var box = rep.appendChild(document.createElement("input"));
-  box.type="checkbox";
-  box.id="mwf"
-  box.onclick=replicate;
-
-  var label = rep.appendChild(document.createElement("label"));
-  label.innerHTML = "MWF";
-
-  rep.appendChild(document.createElement("br"));
-
-  box = rep.appendChild(document.createElement("input"));
-  box.type="checkbox";
-  box.id="tr"
-  box.onclick=replicate;
-
-  label = rep.appendChild(document.createElement("label"));
-  label.innerHTML = "TR";
-
-
-  rep.appendChild(document.createElement("hr"));
-  
-  var row = table.appendChild(document.createElement("tr"));
-  row.className="fltl";
-  
-  var td = row.appendChild(document.createElement("td"))
-  var div = td.appendChild(document.createElement("div"));
-  div.id='content';
-
-  var button = div.appendChild(document.createElement("input"));
-  button.type="button";
-  button.value="Find Google Calendars";
-  button.onclick=handleAuthClick;
-
-  td.appendChild(document.createElement("hr"));
-
-  var row = table.appendChild(document.createElement("tr"));
-  row.className="fltl";
-  var div = row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
-  div.id='emails';
-
-  var who = div.appendChild(document.createElement("h4"));
-  who.innerHTML = "Who's Invited?";
-
-  var info = div.appendChild(document.createElement("h6"));
-  info.innerHTML="Add group members via email"
-  
-  var text = div.appendChild(document.createElement("input"));
-  text.type="text";
-  text.id="email";
-
-  var button = div.appendChild(document.createElement("input"));
-  button.type="button";
-  button.value="+";
-  button.onclick=invite;
-
-
-}
-
-function invite(){
-  var email = document.getElementById("email");
-  var email_div = document.getElementById("emails");
-
-  email_div.appendChild(document.createElement("br"));
-  var line = document.createElement("label");
-  line.innerHTML = email.value + " X ";
-
-  email_div.appendChild(line);
-
-}
-
-
-function showMeetingTimes(){
-  console.log("shown");
-  var container = document.getElementById("options");
-
-  if(document.getElementById("options_table")!=null){
-    container.removeChild(document.getElementById("options_table"));
-  }
-
-  var table = container.appendChild(document.createElement("table"));
-  table.id="options_table";
-
-
-  table.appendChild(document.createElement("tr"))
-       .appendChild(document.createElement("td")).innerHTML="Suggested Meeting Times";
-
-
-  var meeting_times = ["Monday, April 8th, 10:00 am", "Wednesday, April 10th, 4:00 pm", "Thursday, April 11th, 3:00 pm"];
-  
-  for(var i=0; i<meeting_times.length; i++){
-    
-    var element = table.appendChild(document.createElement("tr"))
-                       .appendChild(document.createElement("td"));
-    
-    var radio_button = element.appendChild(document.createElement("input"));
-    radio_button.type="radio";
-    radio_button.name= "meeting_times";
-    radio_button.value= meeting_times[i];
-
-    var label = element.appendChild(document.createElement("label"));
-    label.innerHTML=meeting_times[i];
-  }
-table.appendChild(document.createElement("tr"))
-       .appendChild(document.createElement("td")).innerHTML='&nbsp;';
-
-table.appendChild(document.createElement("tr"))
-       .appendChild(document.createElement("td")).innerHTML="Filter By Availability";
-
-  var percentages = ["100%", "+75%", "+50%", "+25%"];
-  for(var i=0; i<percentages.length; i++){
-    
-    var element = table.appendChild(document.createElement("tr"))
-                       .appendChild(document.createElement("td"));
-    
-    var radio_button = element.appendChild(document.createElement("input"));
-    radio_button.type="radio";
-    radio_button.name= "percentages";
-    radio_button.value= percentages[i];
-    
-    var label = element.appendChild(document.createElement("label"));
-    label.innerHTML=percentages[i];
-  }
-
 }
