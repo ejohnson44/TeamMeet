@@ -33,6 +33,8 @@ function handleAuthResult(authResult) {
 
 // Load the API and make an API call.  Display the results on the screen.
 function makeApiCall() {
+  
+  
   //Load the google calendar API
   gapi.client.load('calendar', 'v3', function() {
     //assemble the request for a list of the users calendars
@@ -41,7 +43,14 @@ function makeApiCall() {
     request.execute(function(resp) {
       console.log(resp);
       
+      var boxes = document.getElementById('content').getElementsByTagName("div");
+      var length = new Number(boxes.length);
       
+      while( boxes.length >0 ){
+        document.getElementById('content').removeChild(boxes[0]);
+      }
+      
+
       for(var i=0; i<resp.items.length; i++){
         //save the calendar information
         calendars[i] = {name: resp.items[i].summary, id: resp.items[i].id, busy: []};
@@ -58,7 +67,8 @@ function makeCheckBox(name, id){
   console.log(name);
   
   var container = document.createElement("div");
-  
+  container.id="boxes";
+
   var checkbox = document.createElement("input");
   checkbox.type="checkbox";
   checkbox.value = id;
@@ -267,13 +277,7 @@ function showOptions(){
   rep.innerHTML = 'Replicate';
   row.appendChild(rep);
 
-  
-  
-  //var boxes =  row.appendChild(document.createElement("td"));
-  //boxes.align="left";
   rep.appendChild(document.createElement("br")).appendChild(document.createElement("br"));
-  
-
 
 
   var box = rep.appendChild(document.createElement("input"));
@@ -286,8 +290,6 @@ function showOptions(){
 
   rep.appendChild(document.createElement("br"));
 
-  
-
   box = rep.appendChild(document.createElement("input"));
   box.type="checkbox";
   box.id="tr"
@@ -296,10 +298,14 @@ function showOptions(){
   label = rep.appendChild(document.createElement("label"));
   label.innerHTML = "TR";
 
-  table.appendChild(document.createElement("br"));
+
+  rep.appendChild(document.createElement("hr"));
+  
   var row = table.appendChild(document.createElement("tr"));
   row.className="fltl";
-  var div = row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
+  
+  var td = row.appendChild(document.createElement("td"))
+  var div = td.appendChild(document.createElement("div"));
   div.id='content';
 
   var button = div.appendChild(document.createElement("input"));
@@ -307,7 +313,43 @@ function showOptions(){
   button.value="Find Google Calendars";
   button.onclick=handleAuthClick;
 
+  td.appendChild(document.createElement("hr"));
+
+  var row = table.appendChild(document.createElement("tr"));
+  row.className="fltl";
+  var div = row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
+  div.id='emails';
+
+  var who = div.appendChild(document.createElement("h4"));
+  who.innerHTML = "Who's Invited?";
+
+  var info = div.appendChild(document.createElement("h6"));
+  info.innerHTML="Add group members via email"
+  
+  var text = div.appendChild(document.createElement("input"));
+  text.type="text";
+  text.id="email";
+
+  var button = div.appendChild(document.createElement("input"));
+  button.type="button";
+  button.value="+";
+  button.onclick=invite;
+
+
 }
+
+function invite(){
+  var email = document.getElementById("email");
+  var email_div = document.getElementById("emails");
+
+  email_div.appendChild(document.createElement("br"));
+  var line = document.createElement("label");
+  line.innerHTML = email.value + " X ";
+
+  email_div.appendChild(line);
+
+}
+
 
 function showMeetingTimes(){
   console.log("shown");
