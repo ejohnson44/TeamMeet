@@ -8,6 +8,7 @@
     <script type='text/javascript'  src='calendarImport.js'></script>
     <script type='text/javascript'  src='calendar.js'></script>
     <script type='text/javascript'  src='calendarGeneration.js'></script>
+    <script type='text/javascript'  src='emailInvitations.js'></script>
     <script type='text/javascript'  src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
     <script type='text/javascript'  src='https://apis.google.com/js/client.js'></script>
 
@@ -37,14 +38,15 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td colspan="2"><p>&nbsp;</p>
+      <p>Use your schedule to highlight times when you're busy. </p>
+      <p>The Group View tab lets you know when your teammates are free.</p></td>
     </tr>
   <tr>
     <td align="center" valign="middle">&nbsp;</td>
   
-    <td align="center" valign="middle">Options
-      <p>&nbsp;</p>
+    <td align="center" valign="top"><hr />
+      <p>Options</p>
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td>Replicate</td>
@@ -65,21 +67,37 @@
             </td>
           </tr>
         <tr>
-          <td colspan="2"><p>&nbsp;
+          <td colspan="2" align="center"><p>&nbsp;
             </p>
             <p>
               <div id='content'>
                 <form>
-                  <input type="button" value="Find Google Calendars" onclick="handleAuthClick()">
+                  <p>
+                    <input type="button" value="Find Google Calendars" onclick="handleAuthClick()">
+                  </p>
                 </form>
               </div>
+              <p>&nbsp;</p>
+              <hr />
+              <p>Who's Invited?</p>
+              <p class="helptext">Add group members via email.</p>
+              <p class="helptext">&nbsp;</p>
+              <p>
+                <label for="email"></label>
+                <input name="email" type="text" id="emailToAdd" size="20" onfocus="this.value=''" />
+                <input type="button" name="addEmailButton" id="addEmailButton" onclick="addEmail()" value="+" />
+              </p>
+              <div id="emailList"></div>
             </p></td>
           </tr>
-        </table>
+        <tr>
+          <td colspan="2" align="center">&nbsp;</td>
+        </tr>
+      </table>
       
       
     </td>
-    <td align="center" valign="middle"><div id="TabbedPanels1" class="TabbedPanels">
+    <td align="center" valign="top"><div id="TabbedPanels1" class="TabbedPanels">
       <ul class="TabbedPanelsTabGroup">
         <li class="TabbedPanelsTab" tabindex="0">My Schedule</li>
         <li class="TabbedPanelsTab" tabindex="0">Group View</li>
@@ -104,6 +122,16 @@
 </table>
 <script type="text/javascript">
   var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+  
+  // Key listener for email textbox
+  document.getElementById("emailToAdd").addEventListener("keydown", function(e) {
+    // Enter is pressed
+    if (e.keyCode == 13) { 
+		addEmail(); 
+		$("emailToAdd").value = '';
+	}
+	});
+
 </script>
   <!-- end .content --></div>
   <!-- end .container --></div>

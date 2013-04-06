@@ -53,3 +53,20 @@
 	border-bottom-color: #CCC;
 	border-left-color: #CCC;
 }
+.helptext {
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	color: #333;
+	padding: 0;
+	margin: 0;
+}
+.no_padding {
+	margin: 0px;
+	padding: 0px;
+}
+#emailList {
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+}
