@@ -9,32 +9,34 @@
 
 <body>
 <div class = "container">
-<div class="header"><!-- end .header --><a href="#"><img src="TeamMeetLogo.png" width="154" height="154" alt="The Best Team Meeting Scheduler" align="middle" /></a></div> 
-<div class = "content">
 
-  <div id="label">
-        <h1 class='ctr'>TeamMeet</h1>
-        <h3 class='ctr'>Collaboratively plan your team meetings</h3>
+  <div class="header"> 
+    <img src="TeamMeetLogo.png" width="8%" height="8%" alt="The Best Team Meeting Scheduler"/> 
+  </div> 
+  
+  <div class = "content">
+    <div>
+          <h1 class='ctr'>TeamMeet</h1>
+          <h3 class='ctr'>Collaboratively plan your team meetings</h3>
     </div>
-  <div id="forms" class='ctr'>
-    <div id="create">
-    <form action="" method="get">
-      <input name="Meeting Name" type="text" value="Meeting Name" onfocus="this.value=''"/>
-      <input name="Username2" type="text" value="Username" onfocus="this.value=''"/>
-      <a href="wizard.html"> <input name="create" type="button" value="Create" /></a>
-    </form>
-    </div>
+    
+    <div id="forms" class='ctr'>
+      <div id="create">
+        <form action="" method="get">
+          <a href="wizard.html"> <input name="create" type="button" value="Create A New Group Meeting" /> </a>
+        </form>
+      </div>
       
-    <div id="login">  
-    <form action="" method="get">
-      <input name="Meeting Name" type="text" value="Meeting Name" onfocus="this.value=''"/>
-      <input name="Username" type="text" value="Username" onfocus="this.value=''"/>
-      <a href="calendar.html"><input name="log_in" type="button" value="Log In" />	</a>
-    </form>						 
-     </div> 
+
+      <div id="login">  
+        <form action="" method="get">
+          <input name="Meeting Name" type="text" value="Meeting Name" onfocus="this.value=''"/>
+          <input name="Username" type="text" value="Email" onfocus="this.value=''"/>
+          <a href="calendar.html"> <input name="log_in" type="button" value="Log In" />	</a>
+        </form>						 
+       </div> 
+    </div>
   </div>
-  </div>
-  <div class="footer"><!-- end .footer --></div>
 
 </div>
 </body>

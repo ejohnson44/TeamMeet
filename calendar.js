@@ -20,7 +20,6 @@ function attachListeners(htmlID){
 				$(this).toggleClass("highlighted");
 				$(this).toggleClass("not_highlighted");
 			}
-			transferToGroup();
 			return false; // prevent text selection
 		})
     .mouseover(function () {
@@ -36,7 +35,6 @@ function attachListeners(htmlID){
 				$(this).toggleClass("not_highlighted");
 			}
 		}
-		transferToGroup();
     });
   
   $(document)

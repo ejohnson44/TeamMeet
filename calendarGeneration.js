@@ -26,6 +26,8 @@ $(window).load(function(){
   generateCalendar('calendar');
   generateCalendar('group_calendar');
 
+  showOptions();
+
 });
 
 function loadCalendars(){

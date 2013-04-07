@@ -33,6 +33,8 @@ function handleAuthResult(authResult) {
 
 // Load the API and make an API call.  Display the results on the screen.
 function makeApiCall() {
+  
+  
   //Load the google calendar API
   gapi.client.load('calendar', 'v3', function() {
     //assemble the request for a list of the users calendars
@@ -41,12 +43,22 @@ function makeApiCall() {
     request.execute(function(resp) {
       console.log(resp);
       
+      var boxes = document.getElementById('content').getElementsByTagName("div");
+      var length = new Number(boxes.length);
       
+      //remove the boxes that were created previously
+      while( boxes.length >0 ){
+        document.getElementById('content').removeChild(boxes[0]);
+      }
+      
+
       for(var i=0; i<resp.items.length; i++){
         //save the calendar information
         calendars[i] = {name: resp.items[i].summary, id: resp.items[i].id, busy: []};
         //make the checkbox
-        makeCheckBox(calendars[i].name, calendars[i].id);
+        if(calendars[i].id.indexOf("calendar.google.com") != -1){
+          makeCheckBox(calendars[i].name, calendars[i].id);
+        }
       }
 
     }); //close execution function
@@ -58,7 +70,8 @@ function makeCheckBox(name, id){
   console.log(name);
   
   var container = document.createElement("div");
-  
+  container.id="boxes";
+
   var checkbox = document.createElement("input");
   checkbox.type="checkbox";
   checkbox.value = id;
@@ -127,7 +140,6 @@ function checkCal(event){
       }
       console.log(calendars[cal_position]);
       displayBusyTimes();
-      transferToGroup();
     }); //end the request
   }); //end the calendar load
 }
@@ -151,7 +163,6 @@ function uncheckCal(event){
       }
 
       displayBusyTimes();
-      transferToGroup();
 }
 
 function displayBusyTimes(){
@@ -177,12 +188,19 @@ function transferToGroup(){
   
   for(var i=0; i<elements_indiv.length; i++){
       elements_group[i].className =  elements_indiv[i].className;
+      elements_group[i].value = elements_group[i].value+1;
   }
+
+  showMeetingTimes();
+  console.log("transferToGroup");
 
 }
 
-function replicate(mwf){
-  console.log(mwf);
+function replicate(event){
+  var mwf = false;
+  if(event.toElement.id==="mwf"){
+    mwf=true;
+  }
   var num_days = (end_date-start_date)/(1000*60*60*24);
   var day = start_date.getDay();
   var num_hours = end_time-start_time;
