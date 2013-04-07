@@ -9,6 +9,7 @@ var weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 //when the window loads, generate the calendar and get the information out of the url
 $(window).load(function(){
 
+  if(document.URL.indexOf('?') != -1){
 	var timeInfo = document.URL.split('?')[1].split("&");
 	
 	start_time = parseInt(timeInfo[0].split("=")[1]);
@@ -20,6 +21,14 @@ $(window).load(function(){
   start_date = new Date(start_date_string);
   end_date = new Date(end_date_string);
   end_date.setHours(end_time);
+  }
+  else{
+    start_date = new Date();
+    end_date = new Date();
+    end_date.setDate(start_date.getDate()+5);
+    start_time=9;
+    end_time=17;
+  }
 
 
 

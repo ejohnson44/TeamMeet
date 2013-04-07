@@ -1,4 +1,6 @@
 
+var invited_members = [];
+
 function showOptions(){
   var container = document.getElementById("options");
   
@@ -85,6 +87,18 @@ function showOptions(){
   button.value="+";
   button.onclick=invite;
 
+  //remake all of the email labels
+  for(var i=0; i<invited_members.length; i++){
+    if(invited_members[i] !== ""){
+      div.appendChild(document.createElement("br"));
+      var line = document.createElement("label");
+      line.innerHTML = invited_members[i];
+      line.id=i;
+      line.onclick=removeEmail;
+      div.appendChild(line);  
+    }
+  }
+
 
 }
 
@@ -94,10 +108,19 @@ function invite(){
 
   email_div.appendChild(document.createElement("br"));
   var line = document.createElement("label");
+  line.onclick=removeEmail;
   line.innerHTML = email.value +  '&nbsp;' + '&nbsp;' + '&nbsp;' + " X ";
+  line.id=invited_members.length;
+
+  invited_members[invited_members.length] = line.innerHTML;
 
   email_div.appendChild(line);
+}
 
+function removeEmail(event){
+  var pos = event.toElement.id;
+  invited_members[pos]="";
+  document.getElementById("emails").removeChild(event.toElement);
 }
 
 
