@@ -1,4 +1,7 @@
 
+
+var email_list = [];
+
 function showOptions(){
   var container = document.getElementById("options");
   
@@ -67,50 +70,59 @@ function showOptions(){
 
   var email_row = table.appendChild(document.createElement("tr"));
   email_row.className="fltl";
-  var div = email_row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
-  div.id='emails';
+  var email_div = email_row.appendChild(document.createElement("td")).appendChild(document.createElement("div"));
+  email_div.id='emails';
 
-  var who = div.appendChild(document.createElement("h4"));
+  var who = email_div.appendChild(document.createElement("h4"));
   who.innerHTML = "Who's Invited?";
 
-  var info = div.appendChild(document.createElement("h6"));
+  var info = email_div.appendChild(document.createElement("h6"));
   info.innerHTML="Add group members via email"
   
-  var text = div.appendChild(document.createElement("input"));
+  var text = email_div.appendChild(document.createElement("input"));
   text.type="text";
   text.id="email";
   text.addEventListener("keydown", function(e) {
     // Enter is pressed
     if (e.keyCode == 13) { 
-		invite(); 
-		$("emailToAdd").value = '';
-	}
+		  invite(); 
+      text.value = "";
+	  }
   });
   
-  var button = div.appendChild(document.createElement("input"));
+  var button = email_div.appendChild(document.createElement("input"));
   button.type="button";
   button.value="+";
   button.onclick=invite;
 
+  for(var i=0; i<email_list.length; i++){
+    if(email_list[i] != null){
+      var line = document.createElement("div");
+      line.id = "email"+i;
+      line.innerHTML = email_list[i] + "<input type='button' value = 'x' onClick = 'uninvite("+i+")'/>";
+      email_div.appendChild(line);
+    }
+  }
 
 }
-var emailNum = 0;
+
+
 function invite(){
   var email = document.getElementById("email");
   var email_div = document.getElementById("emails");
   if (email.value !== '') {
 	  var line = document.createElement("div");
-	  line.id = "email"+emailNum;
-	  line.innerHTML = email.value + "<input type='button' value = 'x' onClick = 'uninvite("+emailNum+")'/>";
+	  line.id = "email"+email_list.length;
+	  line.innerHTML = email.value + "<input type='button' value = 'x' onClick = 'uninvite("+email_list.length+")'/>";
 	  email_div.appendChild(line);
-	  emailNum = emailNum + 1;
+	  email_list[email_list.length] = email.value;
 	}
 
 }
 function uninvite(idNum) {
 	  var elem = document.getElementById("email"+(idNum));
 	  elem.parentNode.removeChild(elem);
-	  
+    email_list[idNum] = null;
 }
 
 

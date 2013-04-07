@@ -9,17 +9,29 @@ var weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 //when the window loads, generate the calendar and get the information out of the url
 $(window).load(function(){
 
-	var timeInfo = document.URL.split('?')[1].split("&");
-	
-	start_time = parseInt(timeInfo[0].split("=")[1]);
-	end_time = parseInt(timeInfo[1].split("=")[1]);
+  if(document.URL.indexOf('?')!=-1){
+  	var timeInfo = document.URL.split('?')[1].split("&");
+  	
+  	start_time = parseInt(timeInfo[0].split("=")[1]);
+  	end_time = parseInt(timeInfo[1].split("=")[1]);
 
-  start_date_string = timeInfo[2].split("=")[1].replace(/%20/g, " ");
-  end_date_string = timeInfo[3].split("=")[1].replace(/%20/g, " ");
+    start_date_string = timeInfo[2].split("=")[1].replace(/%20/g, " ");
+    end_date_string = timeInfo[3].split("=")[1].replace(/%20/g, " ");
 
-  start_date = new Date(start_date_string);
-  end_date = new Date(end_date_string);
-  end_date.setHours(end_time);
+    start_date = new Date(start_date_string);
+    end_date = new Date(end_date_string);
+    end_date.setHours(end_time);
+  }
+  else{
+    start_date = new Date();
+    end_date = new Date();
+    end_date.setDate(end_date.getDate()+5);
+
+    start_time = 9;
+    end_time = 17;
+  }
+
+
 
 
 
