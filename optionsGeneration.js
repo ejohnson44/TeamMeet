@@ -79,7 +79,14 @@ function showOptions(){
   var text = div.appendChild(document.createElement("input"));
   text.type="text";
   text.id="email";
-
+  text.addEventListener("keydown", function(e) {
+    // Enter is pressed
+    if (e.keyCode == 13) { 
+		invite(); 
+		$("emailToAdd").value = '';
+	}
+  });
+  
   var button = div.appendChild(document.createElement("input"));
   button.type="button";
   button.value="+";
@@ -91,15 +98,19 @@ var emailNum = 0;
 function invite(){
   var email = document.getElementById("email");
   var email_div = document.getElementById("emails");
-
-  email_div.appendChild(document.createElement("br"));
-  var emailToAdd = email.value;
-  if (emailToAdd !== '') {
-	  line = "<div id='email"+emailNum+"'>" + emailToAdd + "<input type='button' value = 'x' onClick = 'removeEmail("+emailNum+")'/></div>";
+  if (email.value !== '') {
+	  var line = document.createElement("div");
+	  line.id = "email"+emailNum;
+	  line.innerHTML = email.value + "<input type='button' value = 'x' onClick = 'uninvite("+emailNum+")'/>";
 	  email_div.appendChild(line);
 	  emailNum = emailNum + 1;
-  }
+	}
 
+}
+function uninvite(idNum) {
+	  var elem = document.getElementById("email"+(idNum));
+	  elem.parentNode.removeChild(elem);
+	  
 }
 
 
