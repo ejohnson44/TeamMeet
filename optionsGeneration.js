@@ -116,6 +116,7 @@ function invite(){
 	  line.innerHTML = email.value + "<input type='button' value = 'x' onClick = 'uninvite("+email_list.length+")'/>";
 	  email_div.appendChild(line);
 	  email_list[email_list.length] = email.value;
+    email.value="";
 	}
 
 }
@@ -196,5 +197,9 @@ function showMeetingTimes(){
        .appendChild(document.createElement("td")).innerHTML="<strong>1/4 Members Have Responded</strong>";
 
 
+
+}
+
+function generateMeetingTimes(){
 
 }
