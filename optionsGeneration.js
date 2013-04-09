@@ -157,10 +157,21 @@ function showMeetingTimes(){
     var label = element.appendChild(document.createElement("label"));
     label.innerHTML=meeting_times[i];
   }
-table.appendChild(document.createElement("tr"))
+
+  table.appendChild(document.createElement("tr"))
        .appendChild(document.createElement("td")).innerHTML='&nbsp;';
 
-table.appendChild(document.createElement("tr"))
+  var button_data = table.appendChild(document.createElement("tr"))
+       .appendChild(document.createElement("td"));
+  var button = button_data.appendChild(document.createElement("input"));
+  button.type="button";
+  button.value="Send Meeting Choice to Group";
+  
+  
+  table.appendChild(document.createElement("tr"))
+       .appendChild(document.createElement("td")).innerHTML='&nbsp;';
+
+  table.appendChild(document.createElement("tr"))
        .appendChild(document.createElement("td")).innerHTML="<strong>Filter By Availability</strong>";
 
   var percentages = ["100%", "+75%", "+50%", "+25%"];
@@ -183,5 +194,7 @@ table.appendChild(document.createElement("tr"))
   
   table.appendChild(document.createElement("tr"))
        .appendChild(document.createElement("td")).innerHTML="<strong>1/4 Members Have Responded</strong>";
+
+
 
 }
