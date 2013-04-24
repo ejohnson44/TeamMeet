@@ -23,8 +23,16 @@ function setStartTime(){
 	time = parseInt(time.split(":")[0]);
 
 	//console.log(document.getElementById("RadioGroup1_1").checked);
-	if(document.getElementById("RadioGroup1_1").checked)
-		time += 12;
+	if(document.getElementById("RadioGroup1_1").checked){
+		if(time != 12){
+			time += 12;
+		}
+	}
+	else{
+		if(time == 12){
+			time = 0;
+		}
+	}
 
 	start_time = time;
 	//console.log(start_time);
@@ -36,8 +44,16 @@ function setEndTime(){
 	time = parseInt(time.split(":")[0]);
 
 	//console.log(document.getElementById("RadioGroup2_1").checked);
-	if(document.getElementById("RadioGroup2_1").checked)
-		time += 12;
+	if(document.getElementById("RadioGroup2_1").checked){
+		if(time != 12){
+			time += 12;
+		}
+	}
+	else{
+		if(time == 12){
+			time = 0;
+		}
+	}
 
 	end_time = time;
 	
